@@ -1,0 +1,18 @@
+version: '3'
+services:
+  api:
+    image: node:9.3.0
+    working_dir: /home/node/app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./packages/api:/home/node/app
+    links:
+      - mongo
+    command: "npm start"
+    expose:
+      - "8000"
+  mongo:
+    image: mongo:3.6.0
+    volumes:
+      - ./data/db:/data/db
