@@ -1,6 +1,6 @@
-const { getBuyPrice, getSellPrice } = require('../clients/coinbase');
 const { CronJob } = require('cron');
-const { getDb } = require('../database');
+const { getBuyPrice, getSellPrice } = require('../services/coinbase');
+const { getDb } = require('../services/database');
 
 const watchedCurrencies = ['BTC-EUR', 'LTC-EUR', 'ETH-EUR' ];
 
