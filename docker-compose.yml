@@ -16,3 +16,9 @@ services:
     image: mongo:3.6.0
     volumes:
       - ./data/db:/data/db
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    links:
+      - mongo
