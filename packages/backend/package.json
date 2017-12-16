@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.17.1",
+    "cron": "^1.3.0",
     "hapi": "^17.1.1",
-    "mongodb": "^3.0.0-rc0",
-    "cron": "^1.3.0"
+    "joi": "^13.0.2",
+    "lodash": "^4.17.4",
+    "mongodb": "^3.0.0-rc0"
   }
 }

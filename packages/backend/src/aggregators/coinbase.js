@@ -1,8 +1,13 @@
 const { CronJob } = require('cron');
 const { getBuyPrice, getSellPrice } = require('../services/coinbase');
 const { getDb } = require('../services/database');
+const { CURRENCY_PAIRS } = require('../services/constants');
 
-const watchedCurrencies = ['BTC-EUR', 'LTC-EUR', 'ETH-EUR' ];
+const watchedCurrencies = [
+  CURRENCY_PAIRS.BTC.EUR,
+  CURRENCY_PAIRS.LTC.EUR,
+  CURRENCY_PAIRS.ETH.EUR,
+];
 
 const priceFormater = (response, time, type) => ({
   ...response.data.data,

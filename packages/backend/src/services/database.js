@@ -26,4 +26,8 @@ module.exports = {
   connect,
   getDb: () => db,
   getClient: () => client,
+  SORT: {
+    ASCENDING: 1,
+    DESCENDING: -1,
+  }
 };
