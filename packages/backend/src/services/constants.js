@@ -3,10 +3,10 @@ const CURRENCY_PAIRS = {
     EUR: 'BTC-EUR',
   },
   LTC: {
-    EUR: 'BTC-EUR',
+    EUR: 'LTC-EUR',
   },
   ETH: {
-    EUR: 'BTC-EUR',
+    EUR: 'ETH-EUR',
   },
 };
 

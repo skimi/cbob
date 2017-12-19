@@ -9,7 +9,7 @@ server.route({
   handler: (request) => {
     const { base, currency, type } = request.query;
     const startDate = new Date(request.query.start);
-    const endDate = new Date(request.query.end);
+    const endDate = request.query.end ? new Date(request.query.end) : new Date();
 
     return new Promise((resolve, reject) => {
       getDb()
@@ -37,7 +37,7 @@ server.route({
         currency: Joi.string().valid(['EUR']).default('EUR'),
         type: Joi.string().valid(['sell', 'buy']),
         start: Joi.date().required(),
-        end: Joi.date().default(new Date()),
+        end: Joi.date(),
       }
     }
   }
