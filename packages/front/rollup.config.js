@@ -26,6 +26,10 @@ export default {
     resolve(),
     commonjs({
       include: 'node_modules/**',
+      namedExports: {
+        'node_modules/react/index.js': ['Children', 'Component', 'PropTypes', 'createElement'],
+        'node_modules/react-dom/index.js': ['render']
+      }
     }),
     html({
       template: 'src/index.html',
@@ -52,7 +56,10 @@ export default {
     babel({
       exclude: 'node_modules/**'
     }),
-    process.env.ROLLUP_WATCH && serve('dist'),
+    process.env.ROLLUP_WATCH && serve({
+      contentBase: 'dist',
+      historyApiFallback: true
+    }),
     process.env.ROLLUP_WATCH && livereload('dist')
   ].filter(Boolean),
 };
