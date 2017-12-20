@@ -40,17 +40,18 @@ server.route({
   method: 'POST',
   path: '/orders',
   handler: (request) => {
-    const { base, type, subtype, amount } = request.payload;
+    const { base, type, subtype, amount, price } = request.payload;
 
     return new Promise((resolve, reject) => {
       getDb()
         .collection(COLLECTION)
-        .insertOne({
+        .insertOne(omitBy({
           base,
           type,
           subtype,
           amount,
-        })
+          price,
+        }, isNil))
         .then((result) => {
           resolve(result.ops[0]);
         })
@@ -64,8 +65,9 @@ server.route({
       payload: {
         base: Joi.string().valid(['BTC', 'LTC', 'ETH']).required(),
         type: Joi.string().valid(['buy', 'sell']).required(),
-        subtype: Joi.string().valid(['stoploss', 'market', 'limit']).required(),
+        subtype: Joi.string().valid(['stop', 'market', 'limit']).required(),
         amount: Joi.number().required(),
+        price: Joi.number(),
       }
     }
   }

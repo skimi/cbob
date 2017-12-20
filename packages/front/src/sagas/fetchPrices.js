@@ -15,7 +15,7 @@ export function* fetchPricesApi({ payload: params }) {
     });
   } catch (error) {
     yield put({
-      type: TYPES.SUCCESS_FETCH_PRICES,
+      type: TYPES.FAILURE_FETCH_PRICES,
       payload: error,
       meta: params,
     });

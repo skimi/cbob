@@ -4,8 +4,8 @@ import { fetchPrices } from '../../modules/actions'
 const mapStateToProps = (state) => ({
   base: state.base,
   currency: state.currency,
-  prices: state.prices,
-  isFetching: state.isFetching,
+  prices: state.prices.data,
+  isFetching: state.prices.isFetching,
 });
 
 const mapDispatchToProps = {

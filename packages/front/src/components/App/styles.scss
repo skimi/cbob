@@ -1,0 +1,22 @@
+.app {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.orders {
+  flex: 1;
+  background: #444;
+}
+
+.prices {
+  flex: 4;
+  overflow: auto;
+}

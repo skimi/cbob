@@ -1,4 +1,6 @@
 import moment from 'moment';
+import omitBy from 'lodash/omitBy';
+import isNil from 'lodash/isNil';
 
 import { TYPES } from './constants'
 
@@ -20,4 +22,17 @@ export const fetchPrices = ({
     type,
     start,
   }
+});
+
+export const fetchOrders = () => ({
+  type: TYPES.REQUEST_FETCH_ORDERS,
+});
+
+export const saveOrder = (order) => ({
+  type: TYPES.REQUEST_SAVE_ORDER,
+  payload: omitBy({
+    ...order,
+    price: parseFloat(order.price) || null,
+    amount: parseFloat(order.amount) || null,
+  }, isNil),
 });

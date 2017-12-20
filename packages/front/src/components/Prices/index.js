@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import styles from './styles.scss';
+
 class Prices extends Component {
   componentWillMount() {
     const { base, currency } = this.props;
@@ -10,7 +12,7 @@ class Prices extends Component {
   render() {
     const { base, currency, prices } = this.props;
     return (
-      <div>
+      <div className={styles.prices}>
         <h1>{base}-{currency}</h1>
         <table>
           <tbody>
