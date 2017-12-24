@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import { fetchPrices } from '../../modules/actions'
+import { fetchHourlyPrices } from '../../modules/actions'
 
 const mapStateToProps = (state) => ({
   base: state.base,
   currency: state.currency,
-  prices: state.prices.data,
+  prices: state.prices.hour,
   isFetching: state.prices.isFetching,
 });
 
 const mapDispatchToProps = {
-  fetchPrices,
+  fetchHourlyPrices,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps);

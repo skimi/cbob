@@ -16,8 +16,8 @@ class PricesContainer extends Component {
   }
 
   fetch(props) {
-    const { fetchPrices, base, currency } = props;
-    fetchPrices({ base, currency });
+    const { fetchHourlyPrices, base, currency } = props;
+    fetchHourlyPrices({ base, currency });
   }
 
   render() {
@@ -27,7 +27,7 @@ class PricesContainer extends Component {
 
     return (
       <Prices
-        {...omit(this.props, ['fetchPrices', 'isFetching'])}
+        {...omit(this.props, ['fetchHourlyPrices', 'isFetching'])}
       />
     )
   }

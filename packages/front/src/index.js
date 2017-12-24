@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import createSagaMiddleware from 'redux-saga'
 import reducer from './modules/recuder';
 import fetchPrices from './sagas/fetchPrices';
+import fetchHourlyPrices from './sagas/fetchHourlyPrices';
 import fetchOrders from './sagas/fetchOrders';
 import saveOrder from './sagas/saveOrder';
 
@@ -25,6 +26,7 @@ let store = createStore(
 );
 
 sagaMiddleware.run(fetchPrices)
+sagaMiddleware.run(fetchHourlyPrices)
 sagaMiddleware.run(fetchOrders)
 sagaMiddleware.run(saveOrder)
 

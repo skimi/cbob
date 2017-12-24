@@ -1,5 +1,6 @@
 import moment from 'moment';
 import omitBy from 'lodash/omitBy';
+import flow from 'lodash/flow';
 import isNil from 'lodash/isNil';
 
 import { TYPES } from './constants'
@@ -23,6 +24,18 @@ export const fetchPrices = ({
     start,
   }
 });
+
+export const fetchHourlyPrices = flow(
+  fetchPrices,
+  (fetchPricesAction) => ({
+    ...fetchPricesAction,
+    type: TYPES.REQUEST_FETCH_HOURLY_PRICES,
+    payload: {
+      ...fetchPricesAction.payload,
+      start: moment().subtract(1, 'y').format('x'),
+    }
+  })
+)
 
 export const fetchOrders = () => ({
   type: TYPES.REQUEST_FETCH_ORDERS,

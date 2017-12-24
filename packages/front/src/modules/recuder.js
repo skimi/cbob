@@ -1,11 +1,13 @@
 import { createReducer } from 'redux-create-reducer';
-import { TYPES } from './constants';
+import { TYPES, VIEWS } from './constants';
 
 const initialState = {
   base: 'BTC',
   currency: 'EUR',
+  view: VIEWS.HOURLY,
   prices: {
     data: [],
+    [VIEWS.HOURLY]: [],
     isFetching: false,
   },
   orders: {
@@ -33,11 +35,33 @@ export default createReducer(initialState, {
     };
   },
 
+  [TYPES.REQUEST_FETCH_HOURLY_PRICES](state) {
+    return {
+      ...state,
+      prices: {
+        ...state.prices,
+        isFetching: true,
+      }
+    };
+  },
+
   [TYPES.SUCCESS_FETCH_PRICES](state, { payload: prices }) {
     return {
       ...state,
       prices: {
+        ...state.prices,
         data: prices,
+        isFetching: false,
+      },
+    };
+  },
+
+  [TYPES.SUCCESS_FETCH_HOURLY_PRICES](state, { payload: prices }) {
+    return {
+      ...state,
+      prices: {
+        ...state.prices,
+        [VIEWS.HOURLY]: prices,
         isFetching: false,
       },
     };
@@ -57,6 +81,7 @@ export default createReducer(initialState, {
     return {
       ...state,
       orders: {
+        ...state.orders,
         data: orders,
         isFetching: false,
       }
