@@ -18,12 +18,19 @@ class Prices extends Component {
       },
 
       title: {
-        text: {base}-{currency}
+        text: `${base}-${currency}`
+      },
+
+      plotOptions: {
+        candlestick: {
+          color: 'red',
+          upColor: 'blue'
+        }
       },
 
       series: [{
         type: 'candlestick',
-        name: {base}-{currency},
+        name: `${base}-${currency}`,
         data: this.props.prices.map(price => ([
           +new Date(price.time),
           parseFloat(price.open.amount),
