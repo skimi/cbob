@@ -58,7 +58,7 @@ server.route({
         .collection('prices')
         .aggregate([
           {
-            '$match': omitBy({
+            $match: omitBy({
               base,
               currency,
               type,
@@ -69,18 +69,22 @@ server.route({
             }, isNil)
           },
           {
-            '$group': {
+            $group: {
               '_id': {
                 y: { $year: '$time' },
                 m: { $month: '$time' },
                 d: { $dayOfMonth: '$time' },
                 h: { $hour: '$time' },
               },
-              groups: {
-                $push: "$$ROOT",
-              }
+              groups: { $push: '$$ROOT' }
             }
-          }
+          },
+          { $sort: {
+            '_id.y': SORT.ASCENDING,
+            '_id.m': SORT.ASCENDING,
+            '_id.d': SORT.ASCENDING,
+            '_id.h': SORT.ASCENDING,
+          } },
         ])
         .toArray((err, hourlyPrices) => {
           if (err) reject(err);
