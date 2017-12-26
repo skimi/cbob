@@ -1,0 +1,12 @@
+{
+  "database": {
+    "url": "mongodb://mongo:27017",
+    "name": "cbob"
+  },
+  "allowedUsers": [],
+  "auth": {
+    "private": "config/key.pem",
+    "public": "config/server.crt",
+    "algorithm": "RS256"
+  }
+}

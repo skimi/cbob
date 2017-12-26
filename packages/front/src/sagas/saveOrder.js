@@ -8,7 +8,10 @@ export function* saveOrderApi({ payload }) {
       `http://localhost:8000/orders`,
       {
         method: 'POST',
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        headers: new Headers({
+          'Authorization': localStorage.getItem('token'),
+        })
       }
     );
     const data = yield promise.json();

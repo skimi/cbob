@@ -5,7 +5,12 @@ import { TYPES } from '../modules/constants';
 export function* fetchOrdersApi({ payload: params }) {
   try {
     const promise = yield fetch(
-      `http://localhost:8000/orders`
+      `http://localhost:8000/orders`,
+      {
+        headers: new Headers({
+          'Authorization': localStorage.getItem('token'),
+        })
+      }
     );
     const data = yield promise.json();
     yield put({

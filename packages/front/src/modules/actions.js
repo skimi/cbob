@@ -49,3 +49,8 @@ export const saveOrder = (order) => ({
     amount: parseFloat(order.amount) || null,
   }, isNil),
 });
+
+export const saveToken = (token) => ({
+  type: TYPES.REQUEST_SAVE_TOKEN,
+  payload: token,
+});

@@ -23,7 +23,7 @@ class Prices extends Component {
 
       plotOptions: {
         candlestick: {
-          color: 'red',
+          color: 'white',
           upColor: 'blue'
         }
       },

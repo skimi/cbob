@@ -5,15 +5,20 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "aggregate": "node src/aggregators/index.js"
+    "aggregate": "node src/aggregators/index.js",
+    "generate-key": "openssl req -newkey rsa:2048 -subj '/CN=www.skimi.fr/O=Skimi./C=FR' -new -nodes -keyout $PWD/config/key.pem -out $PWD/config/csr.pem && openssl x509 -req -days 365 -in $PWD/config/csr.pem -signkey $PWD/config/key.pem -out $PWD/config/server.crt",
+    "generate-token": "node bin/generateToken"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.17.1",
+    "config": "^1.28.1",
     "cron": "^1.3.0",
-    "hapi": "^17.1.1",
+    "hapi": "^17.2.0",
+    "hapi-auth-jwt2": "git://github.com/salzhrani/hapi-auth-jwt2.git#v-17",
     "joi": "^13.0.2",
+    "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "mongodb": "^3.0.0-rc0"
   }

@@ -5,7 +5,12 @@ import { TYPES } from '../modules/constants';
 export function* fetchHourlyPricesApi({ payload: params }) {
   try {
     const promise = yield fetch(
-      `http://localhost:8000/prices/hour?${queryString.stringify(params)}`
+      `http://localhost:8000/prices/hour?${queryString.stringify(params)}`,
+      {
+        headers: new Headers({
+          'Authorization': localStorage.getItem('token'),
+        })
+      }
     );
     const prices = yield promise.json();
     yield put({
