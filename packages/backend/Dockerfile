@@ -1,4 +1,4 @@
-from "node:9.3.0"
+from node:9.3.0
 
 COPY . /home/node/app
 
