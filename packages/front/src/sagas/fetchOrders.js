@@ -1,11 +1,12 @@
 import queryString from 'query-string';
+import config from '../config.json';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { TYPES } from '../modules/constants';
 
 export function* fetchOrdersApi({ payload: params }) {
   try {
     const promise = yield fetch(
-      `http://localhost:8000/orders`,
+      `${config.api}/orders`,
       {
         headers: new Headers({
           'Authorization': localStorage.getItem('token'),

@@ -1,11 +1,12 @@
 import queryString from 'query-string';
+import config from '../config.json';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { TYPES } from '../modules/constants';
 
 export function* saveOrderApi({ payload }) {
   try {
     const promise = yield fetch(
-      `http://localhost:8000/orders`,
+      `${config.api}/orders`,
       {
         method: 'POST',
         body: JSON.stringify(payload),

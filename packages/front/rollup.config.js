@@ -8,6 +8,7 @@ import livereload from 'rollup-plugin-livereload'
 import postcssModules from 'postcss-modules';
 import sass from 'node-sass';
 import html from 'rollup-plugin-fill-html';
+import json from 'rollup-plugin-json';
 
 const cssExportMap = {};
 
@@ -31,6 +32,7 @@ export default {
         'node_modules/react-dom/index.js': ['render']
       }
     }),
+    json(),
     html({
       template: 'src/index.html',
       filename: 'index.html',
