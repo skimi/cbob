@@ -20,7 +20,7 @@ class Login extends Component {
           <input
             className={styles.input}
             placeholder="!%$_@"
-            type="text"
+            type="password"
             ref={(ref) => this.input = ref}
           />
           <button className={styles.button} type="submit">Login</button>
