@@ -8,5 +8,9 @@
     "private": "config/key.pem",
     "public": "config/server.crt",
     "algorithm": "RS256"
+  },
+  "coinbase": {
+    "apiKey": "",
+    "apiSecret": ""
   }
 }

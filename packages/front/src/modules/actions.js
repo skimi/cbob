@@ -41,6 +41,10 @@ export const fetchOrders = () => ({
   type: TYPES.REQUEST_FETCH_ORDERS,
 });
 
+export const fetchAccounts = () => ({
+  type: TYPES.REQUEST_FETCH_ACCOUNTS,
+});
+
 export const saveOrder = (order) => ({
   type: TYPES.REQUEST_SAVE_ORDER,
   payload: omitBy({

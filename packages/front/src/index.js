@@ -8,11 +8,12 @@ import fetchHourlyPrices from './sagas/fetchHourlyPrices';
 import fetchOrders from './sagas/fetchOrders';
 import saveOrder from './sagas/saveOrder';
 import saveToken from './sagas/saveToken';
+import fetchAccounts from './sagas/fetchAccounts';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
-import App from './components/App';
+import App from './containers/App';
 import Login from './containers/Login';
 
 import './base.scss';
@@ -32,6 +33,7 @@ sagaMiddleware.run(fetchHourlyPrices)
 sagaMiddleware.run(fetchOrders)
 sagaMiddleware.run(saveOrder)
 sagaMiddleware.run(saveToken)
+sagaMiddleware.run(fetchAccounts)
 
 ReactDOM.render(
   (

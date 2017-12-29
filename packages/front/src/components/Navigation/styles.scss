@@ -9,16 +9,20 @@
   li {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
   }
+}
+
+.fiat, .link {
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .link {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  padding: 1rem 2rem;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2rem;
 }

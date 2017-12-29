@@ -15,6 +15,10 @@ const initialState = {
     isFetching: false,
     isSaving: false,
   },
+  accounts: {
+    data: [],
+    isFetching: false, 
+  },
 };
 
 export default createReducer(initialState, {
@@ -110,5 +114,36 @@ export default createReducer(initialState, {
         isSaving: false,
       }
     };
+  },
+
+  [TYPES.REQUEST_FETCH_ACCOUNTS](state) {
+    return {
+      ...state,
+      accounts: {
+        ...state.accounts,
+        isFetching: true,
+      },
+    }
+  },
+
+  [TYPES.SUCCESS_FETCH_ACCOUNTS](state, { payload: accounts }) {
+    return {
+      ...state,
+      accounts: {
+        ...state.accounts,
+        data: accounts,
+        isFetching: false,
+      },
+    }
+  },
+
+  [TYPES.FAILURE_FETCH_ACCOUNTS](state) {
+    return {
+      ...state,
+      accounts: {
+        ...state.accounts,
+        isFetching: false,
+      },
+    }
   },
 });
